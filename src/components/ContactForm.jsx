@@ -1,8 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
-// ({ change, submit, name, number })
 
 export class ContactForm extends Component {
   state = {
