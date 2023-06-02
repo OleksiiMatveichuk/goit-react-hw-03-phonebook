@@ -5,11 +5,26 @@ import { Filter } from './Filter';
 import { ContactList } from './ContactList';
 import { nanoid } from 'nanoid';
 
+const KEY = 'Phonebook';
+
 export class App extends Component {
   state = {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const locStor = localStorage.getItem(KEY);
+    if (locStor) {
+      this.setState({ contacts: JSON.parse(locStor) });
+    }
+  }
+
+  componentDidUpdate(_, prev) {
+    if (prev.contacts !== this.state.contacts) {
+      localStorage.setItem(KEY, JSON.stringify(this.state.contacts));
+    }
+  }
 
   handleSubmit = ({ name, number }) => {
     const { contacts } = this.state;
